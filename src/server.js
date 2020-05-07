@@ -6,7 +6,14 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-// catch all
+// not found handling middleware
+app.use((req, res, next) => {
+  const error = new Error("Not found");
+  error.status = 404;
+  next(error);
+});
+
+// catch all middleware
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({ error: error.message });
