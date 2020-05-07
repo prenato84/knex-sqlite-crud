@@ -40,7 +40,11 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      await knex("users").where({ id }).del();
+      const dt = new Date();
+
+      await knex("users")
+        .where({ id })
+        .update("deleted_at", new Date().toISOString().split(".")[0] + "Z");
 
       return res.send();
     } catch (error) {
