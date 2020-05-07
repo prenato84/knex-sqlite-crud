@@ -6,4 +6,9 @@ module.exports = {
 
     return res.json(results);
   },
+  async create(req, res) {
+    const { username } = req.body;
+
+    await knex("users").insert({ username });
+  },
 };
