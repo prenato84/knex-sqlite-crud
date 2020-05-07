@@ -10,5 +10,6 @@ module.exports = {
       tableName: "knex_migrations",
       directory: `${__dirname}/src/database/migrations`,
     },
+    useNullAsDefault: true,
   },
 };
