@@ -1,10 +1,8 @@
 const express = require("express");
-const knex = require("./database");
+const routes = require("./routes");
 
 const app = express();
 
-app.get("/users", (req, res) =>
-  knex("users").then((results) => res.json(results))
-);
+app.use(routes);
 
 app.listen(3333, () => console.log("Server is running"));
